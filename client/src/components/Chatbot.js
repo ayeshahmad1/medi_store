@@ -78,6 +78,7 @@ const Chatbot = () => {
           isCartReminder: true,
         });
       }, 900);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
