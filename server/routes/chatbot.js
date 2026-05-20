@@ -33,13 +33,15 @@ async function callGemini(prompt, jsonMode = true, attempt = 0) {
     });
 
     const text = response.text;
-    console.log('✅ Gemini (gemini-1.5-pro) responded successfully');
+    console.log('✅ Gemini (gemini-2.5-flash) responded successfully');
     return text?.trim() || null;
   } catch (err) {
     const msg = err.message || '';
-    // Auto-retry on 429 rate-limit — wait the suggested delay then retry
-    if (msg.includes('429') && attempt < 2) {
-      const delay = parseRetryDelay(msg);
+    const isQuotaExceeded = /quota|limit: 0|exhausted/i.test(msg);
+    const delay = parseRetryDelay(msg);
+
+    // Auto-retry on 429 rate-limit — wait if transient, but skip if quota is exhausted or wait time is too long (e.g. > 8s)
+    if (msg.includes('429') && !isQuotaExceeded && delay <= 8000 && attempt < 2) {
       console.warn(`⏳ Gemini rate limited — retrying in ${delay}ms (attempt ${attempt + 1}/2)...`);
       await new Promise(r => setTimeout(r, delay));
       return callGemini(prompt, jsonMode, attempt + 1);
