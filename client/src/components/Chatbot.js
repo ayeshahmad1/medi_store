@@ -78,7 +78,7 @@ const Chatbot = () => {
           isCartReminder: true,
         });
       }, 900);
-    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   const addBotMsg = useCallback((data) => {
@@ -139,6 +139,7 @@ const Chatbot = () => {
         products: [], orders: [], coupons: [], action: null,
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [input, isTyping, user, conversationHistory, addBotMsg]);
 
   const handleKeyDown = (e) => {

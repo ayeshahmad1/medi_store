@@ -4,7 +4,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
 import {
-  TrendingUp, TrendingDown, DollarSign, ShoppingCart, Users, Eye,
+  TrendingUp, DollarSign, ShoppingCart, Users, Eye,
   Star, AlertTriangle, Zap, Activity, Target, RefreshCw, ArrowUpRight,
   ArrowDownRight, Package, Brain, BarChart2, Globe
 } from 'lucide-react';

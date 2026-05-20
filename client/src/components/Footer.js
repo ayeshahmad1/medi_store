@@ -22,10 +22,10 @@ const Footer = () => {
           <div className="footer-col">
             <h4>Customer Service</h4>
             <ul>
-              <li><a href="#">Help Center</a></li>
-              <li><a href="#">Returns Policy</a></li>
-              <li><a href="#">Shipping Info</a></li>
-              <li><a href="#">Privacy Policy</a></li>
+              <li><Link to="/">Help Center</Link></li>
+              <li><Link to="/">Returns Policy</Link></li>
+              <li><Link to="/">Shipping Info</Link></li>
+              <li><Link to="/">Privacy Policy</Link></li>
             </ul>
           </div>
           <div className="footer-col">

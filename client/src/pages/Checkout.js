@@ -123,6 +123,14 @@ const Checkout = () => {
       <h1 style={{ color: 'var(--primary-deep)', marginTop: '20px', marginBottom: '10px' }}>Order Placed Successfully!</h1>
       <p style={{ color: 'var(--text-grey)', fontSize: '1.1rem', marginBottom: '30px' }}>
         Thank you, {user?.name}! Your medicines are on the way. 🚀
+        {orderId && (
+          <>
+            <br />
+            <span style={{ fontSize: '0.95rem', color: 'var(--primary-deep)', fontWeight: 'bold' }}>
+              Order ID: #{orderId.toString().slice(-8).toUpperCase()}
+            </span>
+          </>
+        )}
       </p>
       <div style={{ display: 'flex', gap: '15px', justifyContent: 'center' }}>
         <button onClick={() => navigate('/orders')} className="btn" style={{ padding: '12px 30px' }}>Track My Order</button>
