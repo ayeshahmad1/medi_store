@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import axios from 'axios';
+import api from '../utils/api';
 import { StoreContext } from '../context/StoreContext';
 import { useNavigate, Link } from 'react-router-dom';
 const Login = () => {
@@ -10,7 +10,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      const { data } = await api.post('/auth/login', { email, password });
       login(data);
       navigate('/');
     } catch (err) {

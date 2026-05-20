@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import axios from 'axios';
+import api from '../utils/api';
 import { StoreContext } from '../context/StoreContext';
 import { useNavigate, Link } from 'react-router-dom';
 
@@ -18,7 +18,7 @@ const AdminLogin = () => {
     setLoading(true);
     setError('');
     try {
-      const { data } = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      const { data } = await api.post('/auth/login', { email, password });
       if (!data.isAdmin) {
         setError('Access denied. This account does not have admin privileges.');
         setLoading(false);
