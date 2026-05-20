@@ -22,7 +22,21 @@ const geminiRoutes = require('./routes/gemini');
 
 const app = express();
 
-app.use(cors());
+// Allowed origins: localhost for dev + live frontend URL from env
+const allowedOrigins = [
+  'http://localhost:3000',
+  process.env.CLIENT_URL, // set this on Render to your Vercel URL
+].filter(Boolean);
+
+app.use(cors({
+  origin: (origin, callback) => {
+    // Allow requests with no origin (mobile apps, curl, Postman)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    callback(new Error(`CORS: origin ${origin} not allowed`));
+  },
+  credentials: true,
+}));
 app.use(express.json());
 
 app.use((req, res, next) => {

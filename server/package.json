@@ -2,7 +2,10 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
@@ -14,7 +17,6 @@
   "type": "commonjs",
   "dependencies": {
     "@google/genai": "^2.4.0",
-    "@google/generative-ai": "^0.24.1",
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
